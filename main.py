@@ -46,6 +46,21 @@ def register(message):
     if len(group_data[group_name]['members']) >= 2:
         send_random_movie(group_name)
 
+# Команда /reset
+@bot.message_handler(commands=['reset'])
+def reset(message):
+    user_id = message.from_user.id
+    group_name = user_data.get(user_id, {}).get('group')
+
+    if group_name:
+        group_data[group_name]['members'].remove(user_id)
+        user_data.pop(user_id, None)
+        bot.send_message(chat_id=user_id, text="Вы вышли из группы.")
+        for member_id in group_data[group_name]['members']:
+            bot.send_message(chat_id=member_id, text=f"Пользователь {message.from_user.username} вышел из группы.")
+    else:
+        bot.send_message(chat_id=user_id, text="Вы не состоите ни в одной группе.")
+
 # Отправка случайного фильма группе
 def send_random_movie(group_name):
     available_movies = [movie for movie in movies if movie['title'] not in group_data[group_name]['seen_movies']]
