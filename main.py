@@ -131,7 +131,7 @@ def callback_inline(call):
         group_members = group_data[group_name]['members']
         if movie['title'] in liked_movies and all(uid in liked_movies[movie['title']] for uid in group_members):
             for uid in group_members:
-                bot.send_message(chat_id=uid, text=f"Вы все лайкнули фильм: {movie['title']}")
+                bot.send_message(chat_id=uid, text=f"Вы все лайкнули фильм: *{movie['title']}*", parse_mode='Markdown')
             time.sleep(1)
         send_random_movie(group_name)
 
