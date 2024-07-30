@@ -2,6 +2,7 @@ import csv
 import random
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+import time
 
 # Чтение данных из CSV файла
 movies = []
@@ -131,6 +132,7 @@ def callback_inline(call):
         if movie['title'] in liked_movies and all(uid in liked_movies[movie['title']] for uid in group_members):
             for uid in group_members:
                 bot.send_message(chat_id=uid, text=f"Вы все лайкнули фильм: {movie['title']}")
+            time.sleep(1)
         send_random_movie(group_name)
 
 
