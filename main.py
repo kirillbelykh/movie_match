@@ -84,7 +84,7 @@ def send_random_movie(group_name):
     )
 
     for user_id in group_data[group_name]['members']:
-        bot.send_photo(chat_id=user_id, photo=movie['image_url'], caption=f"*{movie['title']}*", reply_markup=markup, parse_mode='Markdown')
+        bot.send_photo(chat_id=user_id, photo=movie['image_url'], caption=f"*{movie['title'].upper()}*", reply_markup=markup, parse_mode='Markdown')
 
 
 # Обработка нажатий кнопок
