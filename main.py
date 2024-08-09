@@ -18,7 +18,7 @@ group_data = {}
 liked_movies = {}
 
 # Инициализация бота
-bot_token = "7206719443:AAGRZobSTm9zywTNLfj2hL7dQ8gmeCY0udY"
+bot_token = ""
 bot = telebot.TeleBot(bot_token)
 
 # Команда /start
